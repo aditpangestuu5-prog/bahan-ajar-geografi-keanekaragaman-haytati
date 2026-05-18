@@ -1,0 +1,1439 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ragam Flora dan Fauna Indonesia | Bahan Ajar Geografi SMA</title>
+  <style>
+    :root {
+      --bg: #f6fbf7;
+      --bg-soft: #ecf7ef;
+      --card: #ffffff;
+      --text: #173321;
+      --muted: #607468;
+      --primary: #1f7a4d;
+      --primary-dark: #135d39;
+      --primary-soft: #dff3e7;
+      --accent: #f2b84b;
+      --earth: #8b5e34;
+      --bluegreen: #2f9f9c;
+      --danger: #c94848;
+      --shadow: 0 20px 50px rgba(31, 122, 77, 0.14);
+      --shadow-soft: 0 10px 28px rgba(31, 122, 77, 0.10);
+      --radius: 28px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      line-height: 1.65;
+      background:
+        radial-gradient(circle at 4% 0%, rgba(242, 184, 75, 0.22), transparent 34%),
+        radial-gradient(circle at 96% 8%, rgba(31, 122, 77, 0.18), transparent 30%),
+        linear-gradient(180deg, #f8fdf9, var(--bg));
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 5px;
+      z-index: 1000;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      transition: width 0.12s ease;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 80;
+      background: rgba(246, 251, 247, 0.84);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(31, 122, 77, 0.11);
+    }
+
+    nav {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 14px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+      color: var(--primary-dark);
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--primary), #34a66a);
+      color: white;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    .nav-links a,
+    .btn {
+      border: 0;
+      text-decoration: none;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.78);
+      color: var(--primary-dark);
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: inset 0 0 0 1px rgba(31, 122, 77, 0.12);
+      transition: 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .btn:hover {
+      transform: translateY(-2px);
+      background: var(--primary-soft);
+    }
+
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 30px 22px 80px;
+    }
+
+    .hero {
+      min-height: 82vh;
+      display: grid;
+      grid-template-columns: 1.12fr 0.88fr;
+      align-items: center;
+      gap: 30px;
+      padding: 36px 0 28px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      margin-bottom: 18px;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      color: var(--primary-dark);
+      font-size: 0.92rem;
+      font-weight: 900;
+    }
+
+    h1 {
+      font-size: clamp(2.7rem, 6.4vw, 6.2rem);
+      line-height: 0.93;
+      letter-spacing: -0.075em;
+      margin-bottom: 22px;
+      color: #102919;
+    }
+
+    .lead {
+      max-width: 760px;
+      color: var(--muted);
+      font-size: clamp(1.06rem, 1.9vw, 1.26rem);
+    }
+
+    .hero-actions {
+      margin-top: 28px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn.primary {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 16px 32px rgba(31, 122, 77, 0.24);
+    }
+
+    .btn.accent {
+      background: #fff5da;
+      color: #754f00;
+    }
+
+    .hero-panel {
+      min-height: 470px;
+      padding: 24px;
+      border-radius: 38px;
+      background:
+        radial-gradient(circle at 86% 8%, rgba(242, 184, 75, 0.35), transparent 32%),
+        linear-gradient(145deg, #ffffff, #e5f6eb);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+      display: grid;
+      align-content: space-between;
+      gap: 18px;
+      border: 1px solid rgba(31, 122, 77, 0.10);
+    }
+
+    .map-card {
+      position: relative;
+      min-height: 292px;
+      display: grid;
+      place-items: center;
+    }
+
+    .island {
+      position: absolute;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--primary), #4dbb77);
+      color: white;
+      font-weight: 900;
+      font-size: 0.78rem;
+      padding: 8px 12px;
+      box-shadow: 0 14px 26px rgba(31, 122, 77, 0.22);
+    }
+
+    .i1 { left: 6%; top: 38%; transform: rotate(-18deg); }
+    .i2 { left: 31%; top: 42%; transform: rotate(3deg); }
+    .i3 { left: 39%; top: 62%; transform: rotate(4deg); }
+    .i4 { right: 29%; top: 38%; transform: rotate(-8deg); }
+    .i5 { right: 7%; top: 45%; transform: rotate(5deg); }
+    .i6 { right: 19%; bottom: 16%; transform: rotate(-4deg); background: linear-gradient(135deg, var(--earth), #c98c47); }
+
+    .center-orb {
+      width: 136px;
+      height: 136px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: #ffffff;
+      color: var(--primary-dark);
+      box-shadow: 0 20px 44px rgba(31, 122, 77, 0.22);
+      border: 8px solid var(--primary-soft);
+      text-align: center;
+      font-weight: 950;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+    }
+
+    .question-box {
+      position: relative;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(31, 122, 77, 0.13);
+      padding: 18px;
+      color: var(--primary-dark);
+    }
+
+    .question-box strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    section {
+      margin-top: 46px;
+      scroll-margin-top: 90px;
+    }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 22px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: clamp(1.85rem, 3.4vw, 3.2rem);
+      line-height: 1;
+      letter-spacing: -0.055em;
+      color: #102919;
+    }
+
+    .section-title p {
+      max-width: 560px;
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .grid-2 { grid-template-columns: repeat(2, 1fr); }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(31, 122, 77, 0.09);
+    }
+
+    .card h3 {
+      font-size: 1.18rem;
+      line-height: 1.22;
+      margin-bottom: 9px;
+      color: #102919;
+    }
+
+    .card p,
+    .card li {
+      color: var(--muted);
+    }
+
+    .icon {
+      width: 54px;
+      height: 54px;
+      display: grid;
+      place-items: center;
+      border-radius: 20px;
+      background: var(--primary-soft);
+      color: var(--primary-dark);
+      font-size: 1.75rem;
+      margin-bottom: 14px;
+    }
+
+    .big-idea {
+      border-radius: 34px;
+      background:
+        radial-gradient(circle at 90% 0%, rgba(242, 184, 75, 0.36), transparent 30%),
+        linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      box-shadow: var(--shadow);
+      padding: 28px;
+    }
+
+    .big-idea p,
+    .big-idea li {
+      color: rgba(255, 255, 255, 0.88);
+    }
+
+    .big-idea h2,
+    .big-idea h3 {
+      color: white;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .pill {
+      display: inline-flex;
+      border-radius: 999px;
+      padding: 7px 12px;
+      background: rgba(255, 255, 255, 0.18);
+      color: inherit;
+      font-size: 0.9rem;
+      font-weight: 850;
+    }
+
+    .light-pill {
+      background: #f0f8f2;
+      color: var(--primary-dark);
+    }
+
+    .factor-card {
+      min-height: 240px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: 0.22s ease;
+    }
+
+    .factor-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow);
+    }
+
+    .factor-card::after {
+      content: "Klik untuk contoh";
+      position: absolute;
+      right: 16px;
+      top: 16px;
+      font-size: 0.75rem;
+      font-weight: 900;
+      color: var(--primary-dark);
+      background: var(--primary-soft);
+      padding: 5px 9px;
+      border-radius: 999px;
+    }
+
+    .factor-detail {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      margin-top: 12px;
+      transition: all 0.28s ease;
+    }
+
+    .factor-card.active .factor-detail {
+      max-height: 260px;
+      opacity: 1;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: 22px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(31, 122, 77, 0.10);
+      background: white;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+      background: white;
+    }
+
+    th,
+    td {
+      padding: 16px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid #e8f1eb;
+    }
+
+    th {
+      background: var(--primary);
+      color: white;
+      font-size: 0.92rem;
+    }
+
+    td {
+      color: var(--muted);
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .tab {
+      border: 0;
+      border-radius: 999px;
+      padding: 10px 14px;
+      background: white;
+      color: var(--primary-dark);
+      box-shadow: inset 0 0 0 1px rgba(31, 122, 77, 0.14);
+      font-weight: 900;
+      cursor: pointer;
+      transition: 0.18s ease;
+    }
+
+    .tab:hover {
+      background: var(--primary-soft);
+    }
+
+    .tab.active {
+      background: var(--primary);
+      color: white;
+      box-shadow: none;
+    }
+
+    .panel {
+      display: none;
+      animation: fade 0.25s ease;
+    }
+
+    .panel.active {
+      display: grid;
+    }
+
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .case-card {
+      min-height: 360px;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 14px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .case-card .icon {
+      background: #fff4cf;
+      color: #765000;
+    }
+
+    .case-card ul {
+      margin-left: 18px;
+    }
+
+    .mini-question {
+      padding: 14px;
+      border-radius: 18px;
+      background: #f4faf6;
+      color: var(--primary-dark);
+      font-weight: 850;
+    }
+
+    .habitat-game {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .game-display {
+      min-height: 360px;
+      border-radius: 34px;
+      padding: 24px;
+      background:
+        radial-gradient(circle at 80% 12%, rgba(242, 184, 75, 0.40), transparent 35%),
+        linear-gradient(145deg, #ffffff, var(--primary-soft));
+      display: grid;
+      align-content: center;
+      justify-items: center;
+      text-align: center;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .animal-emoji {
+      width: 138px;
+      height: 138px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: white;
+      font-size: 4.4rem;
+      margin-bottom: 16px;
+      box-shadow: 0 16px 32px rgba(31, 122, 77, 0.16);
+    }
+
+    .option {
+      display: block;
+      width: 100%;
+      text-align: left;
+      border: 0;
+      border-radius: 18px;
+      padding: 13px 15px;
+      margin-top: 10px;
+      background: #f3faf5;
+      color: var(--text);
+      font-weight: 800;
+      cursor: pointer;
+      transition: 0.16s ease;
+    }
+
+    .option:hover {
+      transform: translateX(4px);
+      background: var(--primary-soft);
+    }
+
+    .option.correct {
+      background: #dff3e7;
+      color: var(--primary-dark);
+      box-shadow: inset 0 0 0 2px var(--primary);
+    }
+
+    .option.wrong {
+      background: #ffe4e4;
+      color: #7a1f1f;
+      box-shadow: inset 0 0 0 2px var(--danger);
+    }
+
+    .option:disabled {
+      cursor: default;
+    }
+
+    .feedback-box {
+      margin-top: 12px;
+      padding: 14px;
+      border-radius: 18px;
+      background: #fff8e6;
+      color: #704f00;
+      font-weight: 800;
+      display: none;
+    }
+
+    .feedback-box.show {
+      display: block;
+    }
+
+    .quiz-card {
+      margin-bottom: 16px;
+    }
+
+    .score-board {
+      position: sticky;
+      top: 84px;
+      border-radius: 28px;
+      padding: 22px;
+      background: linear-gradient(135deg, #ffffff, #eaf8ef);
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(31, 122, 77, 0.10);
+    }
+
+    .score-number {
+      font-size: 4rem;
+      font-weight: 950;
+      letter-spacing: -0.08em;
+      line-height: 1;
+      color: var(--primary-dark);
+    }
+
+    details {
+      background: white;
+      border-radius: 22px;
+      padding: 16px 18px;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(31, 122, 77, 0.09);
+    }
+
+    details + details {
+      margin-top: 12px;
+    }
+
+    summary {
+      cursor: pointer;
+      font-weight: 900;
+      color: var(--primary-dark);
+    }
+
+    details p {
+      margin-top: 10px;
+      color: var(--muted);
+    }
+
+    .timeline {
+      display: grid;
+      gap: 14px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+
+    .step-number {
+      width: 48px;
+      height: 48px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: var(--primary);
+      color: white;
+      font-weight: 950;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .teacher-note {
+      border-left: 6px solid var(--accent);
+      background: #fffaf0;
+    }
+
+    footer {
+      margin-top: 50px;
+      padding-top: 22px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .grid-2,
+      .grid-3,
+      .grid-4,
+      .habitat-game {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+      }
+
+      .score-board {
+        position: static;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      .hero-panel {
+        min-height: 420px;
+      }
+
+      .island {
+        font-size: 0.68rem;
+        padding: 7px 10px;
+      }
+
+      .center-orb {
+        width: 118px;
+        height: 118px;
+      }
+    }
+
+    @media print {
+      header,
+      .progress,
+      .hero-actions,
+      .tabs,
+      .btn,
+      .option,
+      .feedback-box {
+        display: none !important;
+      }
+
+      body {
+        background: white;
+      }
+
+      .card,
+      .big-idea,
+      .hero-panel,
+      .score-board,
+      details {
+        box-shadow: none;
+        border: 1px solid #d8d8d8;
+      }
+
+      section,
+      .hero,
+      .case-card {
+        break-inside: avoid;
+      }
+
+      .panel {
+        display: grid !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="progress" id="progress"></div>
+
+  <header>
+    <nav>
+      <div class="brand"><div class="brand-mark">🌿</div> Geografi XI/F</div>
+      <div class="nav-links">
+        <a href="#masalah">Masalah</a>
+        <a href="#faktor">Faktor</a>
+        <a href="#flora">Flora</a>
+        <a href="#fauna">Fauna</a>
+        <a href="#kasus">Kasus</a>
+        <a href="#game">Tebak Habitat</a>
+        <a href="#kuis">Kuis</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero" id="beranda">
+      <div>
+        <div class="eyebrow">Bahan Ajar Interaktif • Pertemuan 2 • 3 JP</div>
+        <h1>Ragam Flora dan Fauna Indonesia</h1>
+        <p class="lead">
+          Indonesia memiliki kekayaan hayati yang sangat beragam. Namun, flora dan fauna tidak tersebar secara acak. Setiap jenis hidup pada wilayah tertentu karena dipengaruhi kondisi fisik seperti iklim, curah hujan, suhu, tanah, relief, ketinggian, dan kedekatan dengan perairan.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#masalah">Mulai Belajar</a>
+          <a class="btn accent" href="#game">Main Tebak Habitat</a>
+          <button class="btn" onclick="window.print()">Cetak Ringkasan</button>
+        </div>
+      </div>
+
+      <aside class="hero-panel">
+        <div class="map-card" aria-label="Ilustrasi persebaran flora fauna Indonesia">
+          <div class="island i1">Sumatra</div>
+          <div class="island i2">Kalimantan</div>
+          <div class="island i3">Jawa</div>
+          <div class="island i4">Sulawesi</div>
+          <div class="island i5">Papua</div>
+          <div class="island i6">Nusa Tenggara</div>
+          <div class="center-orb">Flora<br />Fauna<br />Habitat</div>
+        </div>
+        <div class="question-box">
+          <strong>Pertanyaan utama</strong>
+          Mengapa ragam flora dan fauna Indonesia berbeda-beda pada setiap wilayah?
+        </div>
+      </aside>
+    </section>
+
+    <section id="tujuan">
+      <div class="section-title">
+        <h2>Tujuan Belajar</h2>
+        <p>Setelah pembelajaran, peserta didik mampu menjelaskan ragam flora dan fauna Indonesia serta faktor fisik yang memengaruhi keanekaragamannya.</p>
+      </div>
+      <div class="grid grid-4">
+        <div class="card"><div class="icon">🔎</div><h3>Mengenali contoh</h3><p>Menyebutkan contoh flora dan fauna khas Indonesia dari berbagai wilayah.</p></div>
+        <div class="card"><div class="icon">🗺️</div><h3>Melihat ruang</h3><p>Memahami bahwa flora dan fauna tersebar pada ruang tertentu, bukan secara acak.</p></div>
+        <div class="card"><div class="icon">🌧️</div><h3>Menganalisis faktor</h3><p>Menghubungkan iklim, curah hujan, suhu, tanah, relief, dan pesisir dengan habitat.</p></div>
+        <div class="card"><div class="icon">💬</div><h3>Menjelaskan alasan</h3><p>Menyampaikan alasan logis mengapa flora/fauna hidup di wilayah tertentu.</p></div>
+      </div>
+    </section>
+
+    <section id="masalah">
+      <div class="big-idea">
+        <div class="section-title" style="margin-bottom: 10px;">
+          <h2>Masalah Utama Pembelajaran</h2>
+          <p>Dalam Geografi, kita tidak hanya menghafal nama flora dan fauna. Kita menanyakan: di mana, mengapa di sana, dan faktor wilayah apa yang memengaruhinya?</p>
+        </div>
+        <div class="grid grid-2">
+          <div>
+            <h3>Perhatikan empat pertanyaan ini:</h3>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+              <li>Mengapa mangrove banyak ditemukan di wilayah pesisir?</li>
+              <li>Mengapa sabana banyak dijumpai di Nusa Tenggara?</li>
+              <li>Mengapa hutan hujan tropis banyak terdapat di wilayah bercurah hujan tinggi?</li>
+              <li>Mengapa komodo tidak hidup merata di seluruh Indonesia?</li>
+            </ul>
+          </div>
+          <div class="card" style="background: rgba(255,255,255,0.15); border-color: rgba(255,255,255,0.18); box-shadow: none;">
+            <h3>Inti jawabannya</h3>
+            <p>Setiap wilayah memiliki karakter fisik yang berbeda. Perbedaan itu membentuk habitat yang berbeda. Habitat yang berbeda akan mendukung jenis flora dan fauna yang berbeda pula.</p>
+            <div class="pill-row">
+              <span class="pill">Wilayah</span>
+              <span class="pill">Habitat</span>
+              <span class="pill">Adaptasi</span>
+              <span class="pill">Persebaran</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="geo-view">
+      <div class="section-title">
+        <h2>Sudut Pandang Geografi</h2>
+        <p>Keanekaragaman hayati dapat dipelajari melalui hubungan antara makhluk hidup dan karakteristik wilayah.</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="card">
+          <div class="icon">📍</div>
+          <h3>Di mana ditemukan?</h3>
+          <p>Geografi memperhatikan lokasi dan persebaran. Misalnya, mangrove banyak ditemukan di pesisir, sedangkan sabana banyak dijumpai di wilayah yang lebih kering.</p>
+        </div>
+        <div class="card">
+          <div class="icon">❓</div>
+          <h3>Mengapa di sana?</h3>
+          <p>Setiap flora dan fauna membutuhkan kondisi habitat tertentu. Karena itu, kondisi fisik wilayah memengaruhi jenis makhluk hidup yang dapat berkembang.</p>
+        </div>
+        <div class="card">
+          <div class="icon">🔗</div>
+          <h3>Apa keterkaitannya?</h3>
+          <p>Jawaban yang baik tidak hanya menyebutkan contoh, tetapi menjelaskan hubungan antara flora/fauna, habitat, dan faktor fisik wilayah.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="faktor">
+      <div class="section-title">
+        <h2>Faktor Fisik yang Memengaruhi Flora dan Fauna</h2>
+        <p>Klik setiap kartu untuk melihat contoh hubungan antara faktor fisik dan keanekaragaman hayati.</p>
+      </div>
+      <div class="grid grid-3">
+        <article class="card factor-card" onclick="toggleFactor(this)">
+          <div class="icon">🌦️</div>
+          <h3>Iklim</h3>
+          <p>Iklim memengaruhi suhu, kelembapan, musim, dan ketersediaan air.</p>
+          <div class="factor-detail"><p><strong>Contoh:</strong> wilayah tropis dengan kelembapan tinggi mendukung pertumbuhan vegetasi yang rapat dan beragam.</p></div>
+        </article>
+        <article class="card factor-card" onclick="toggleFactor(this)">
+          <div class="icon">🌧️</div>
+          <h3>Curah Hujan</h3>
+          <p>Curah hujan menentukan banyak sedikitnya air yang tersedia bagi tumbuhan dan hewan.</p>
+          <div class="factor-detail"><p><strong>Contoh:</strong> curah hujan tinggi mendukung hutan hujan tropis, sedangkan wilayah lebih kering dapat membentuk sabana.</p></div>
+        </article>
+        <article class="card factor-card" onclick="toggleFactor(this)">
+          <div class="icon">🌡️</div>
+          <h3>Suhu</h3>
+          <p>Suhu memengaruhi kemampuan makhluk hidup untuk tumbuh, bergerak, dan berkembang biak.</p>
+          <div class="factor-detail"><p><strong>Contoh:</strong> suhu di dataran tinggi berbeda dari dataran rendah sehingga jenis vegetasinya juga dapat berbeda.</p></div>
+        </article>
+        <article class="card factor-card" onclick="toggleFactor(this)">
+          <div class="icon">🟫</div>
+          <h3>Tanah</h3>
+          <p>Jenis tanah, kesuburan, tekstur, dan kandungan air memengaruhi tumbuhan yang dapat hidup.</p>
+          <div class="factor-detail"><p><strong>Contoh:</strong> tanah berlumpur dan air payau mendukung mangrove di kawasan pesisir tertentu.</p></div>
+        </article>
+        <article class="card factor-card" onclick="toggleFactor(this)">
+          <div class="icon">⛰️</div>
+          <h3>Relief & Ketinggian</h3>
+          <p>Bentuk muka bumi dan ketinggian tempat menciptakan variasi suhu, lereng, dan habitat.</p>
+          <div class="factor-detail"><p><strong>Contoh:</strong> daerah pegunungan memiliki karakter habitat berbeda dari dataran rendah dan pesisir.</p></div>
+        </article>
+        <article class="card factor-card" onclick="toggleFactor(this)">
+          <div class="icon">🌊</div>
+          <h3>Kedekatan dengan Perairan</h3>
+          <p>Wilayah sungai, rawa, muara, dan pesisir membentuk habitat khas.</p>
+          <div class="factor-detail"><p><strong>Contoh:</strong> mangrove hidup di pesisir yang dipengaruhi pasang surut, lumpur, dan air payau.</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="flora">
+      <div class="section-title">
+        <h2>Ragam Flora Indonesia</h2>
+        <p>Flora Indonesia dapat dipahami melalui habitatnya. Setiap habitat memiliki ciri fisik dan jenis tumbuhan yang berbeda.</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Habitat / Ekosistem</th>
+              <th>Contoh Flora</th>
+              <th>Ciri Habitat</th>
+              <th>Faktor Fisik Utama</th>
+              <th>Alasan Keterkaitan</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Hutan hujan tropis</strong></td>
+              <td>Raflesia, berbagai pohon besar, liana, paku-pakuan</td>
+              <td>Vegetasi rapat, lembap, banyak lapisan tajuk</td>
+              <td>Curah hujan tinggi, suhu hangat, kelembapan tinggi</td>
+              <td>Ketersediaan air dan suhu tropis mendukung pertumbuhan tanaman sepanjang tahun.</td>
+            </tr>
+            <tr>
+              <td><strong>Mangrove pesisir</strong></td>
+              <td>Bakau/mangrove</td>
+              <td>Pesisir berlumpur, air payau, dipengaruhi pasang surut</td>
+              <td>Kedekatan dengan laut, tanah berlumpur, salinitas</td>
+              <td>Mangrove memiliki adaptasi akar dan toleransi terhadap genangan serta air payau.</td>
+            </tr>
+            <tr>
+              <td><strong>Sabana</strong></td>
+              <td>Rumput sabana, pohon jarang</td>
+              <td>Padang rumput luas, pepohonan tidak rapat</td>
+              <td>Curah hujan lebih rendah, musim kering lebih terasa</td>
+              <td>Kondisi lebih kering tidak mendukung hutan lebat seperti wilayah bercurah hujan tinggi.</td>
+            </tr>
+            <tr>
+              <td><strong>Hutan musim</strong></td>
+              <td>Jati</td>
+              <td>Mengalami perbedaan musim hujan dan kemarau</td>
+              <td>Iklim musiman, ketersediaan air berubah</td>
+              <td>Beberapa tumbuhan beradaptasi dengan menggugurkan daun saat musim kering.</td>
+            </tr>
+            <tr>
+              <td><strong>Rawa / lahan basah</strong></td>
+              <td>Sagu</td>
+              <td>Wilayah basah, tergenang, dekat sistem perairan</td>
+              <td>Kondisi air, tanah basah, rawa</td>
+              <td>Tumbuhan tertentu mampu hidup pada lahan yang lembap atau tergenang.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="fauna">
+      <div class="section-title">
+        <h2>Ragam Fauna Indonesia</h2>
+        <p>Fauna Indonesia sering dipahami melalui tiga wilayah besar: barat, peralihan, dan timur.</p>
+      </div>
+      <div class="tabs">
+        <button class="tab active" onclick="showPanel('barat', this)">Indonesia Barat</button>
+        <button class="tab" onclick="showPanel('peralihan', this)">Indonesia Tengah / Peralihan</button>
+        <button class="tab" onclick="showPanel('timur', this)">Indonesia Timur</button>
+      </div>
+      <div id="barat" class="panel active grid grid-2">
+        <div class="card">
+          <div class="icon">🐘</div>
+          <h3>Fauna Indonesia Barat</h3>
+          <p>Wilayah barat meliputi Sumatra, Kalimantan, Jawa, dan sekitarnya. Fauna di wilayah ini banyak berupa mamalia besar.</p>
+          <div class="pill-row">
+            <span class="pill light-pill">Orang utan</span>
+            <span class="pill light-pill">Harimau sumatra</span>
+            <span class="pill light-pill">Gajah sumatra</span>
+            <span class="pill light-pill">Badak</span>
+            <span class="pill light-pill">Banteng</span>
+          </div>
+        </div>
+        <div class="card teacher-note">
+          <h3>Hubungan dengan wilayah</h3>
+          <p>Hutan hujan tropis, sungai besar, dan kawasan dataran rendah menjadi habitat penting bagi banyak fauna. Ketika habitat berkurang atau terfragmentasi, ruang hidup satwa juga ikut terganggu.</p>
+        </div>
+      </div>
+      <div id="peralihan" class="panel grid grid-2">
+        <div class="card">
+          <div class="icon">🦎</div>
+          <h3>Fauna Indonesia Tengah / Peralihan</h3>
+          <p>Wilayah ini meliputi Sulawesi, Nusa Tenggara, Maluku, dan sekitarnya. Banyak fauna bersifat khas dan tidak ditemukan merata di wilayah lain.</p>
+          <div class="pill-row">
+            <span class="pill light-pill">Komodo</span>
+            <span class="pill light-pill">Anoa</span>
+            <span class="pill light-pill">Babirusa</span>
+            <span class="pill light-pill">Tarsius</span>
+          </div>
+        </div>
+        <div class="card teacher-note">
+          <h3>Hubungan dengan wilayah</h3>
+          <p>Bentuk kepulauan, isolasi wilayah, iklim lokal, dan variasi habitat membuat banyak fauna di kawasan peralihan memiliki persebaran terbatas.</p>
+        </div>
+      </div>
+      <div id="timur" class="panel grid grid-2">
+        <div class="card">
+          <div class="icon">🦜</div>
+          <h3>Fauna Indonesia Timur</h3>
+          <p>Wilayah timur terutama Papua dan sekitarnya memiliki fauna khas yang banyak berkaitan dengan kawasan Australis.</p>
+          <div class="pill-row">
+            <span class="pill light-pill">Cenderawasih</span>
+            <span class="pill light-pill">Kasuari</span>
+            <span class="pill light-pill">Kanguru pohon</span>
+          </div>
+        </div>
+        <div class="card teacher-note">
+          <h3>Hubungan dengan wilayah</h3>
+          <p>Hutan tropis, rawa, pegunungan, dan wilayah yang relatif luas menyediakan habitat beragam bagi fauna khas Papua.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="kasus">
+      <div class="section-title">
+        <h2>Empat Studi Kasus</h2>
+        <p>Gunakan bagian ini sebagai penguat sebelum siswa berdiskusi dan mengerjakan LKPD cetak.</p>
+      </div>
+      <div class="grid grid-4">
+        <article class="card case-card">
+          <div><div class="icon">🌳</div><h3>Hutan Hujan Tropis</h3></div>
+          <div>
+            <p><strong>Masalah:</strong> Mengapa wilayah ini memiliki vegetasi rapat dan keanekaragaman fauna tinggi?</p>
+            <ul>
+              <li>Curah hujan tinggi.</li>
+              <li>Suhu hangat dan lembap.</li>
+              <li>Banyak sumber makanan dan tempat berlindung.</li>
+              <li>Vegetasi bertingkat dari lantai hutan hingga kanopi.</li>
+            </ul>
+          </div>
+          <div class="mini-question">Kesimpulan: air, panas matahari, dan kelembapan membuat kehidupan sangat beragam.</div>
+        </article>
+        <article class="card case-card">
+          <div><div class="icon">🌾</div><h3>Sabana Nusa Tenggara</h3></div>
+          <div>
+            <p><strong>Masalah:</strong> Mengapa wilayah ini tidak didominasi hutan lebat seperti Kalimantan?</p>
+            <ul>
+              <li>Curah hujan relatif lebih rendah.</li>
+              <li>Musim kering lebih terasa.</li>
+              <li>Vegetasi berupa rumput dan pohon jarang.</li>
+              <li>Fauna beradaptasi pada ruang terbuka.</li>
+            </ul>
+          </div>
+          <div class="mini-question">Kesimpulan: wilayah yang lebih kering cenderung membentuk vegetasi terbuka.</div>
+        </article>
+        <article class="card case-card">
+          <div><div class="icon">🌊</div><h3>Mangrove Pesisir</h3></div>
+          <div>
+            <p><strong>Masalah:</strong> Mengapa mangrove banyak ditemukan di pesisir dan tidak tumbuh di semua wilayah?</p>
+            <ul>
+              <li>Hidup di wilayah pasang surut.</li>
+              <li>Berada pada tanah berlumpur.</li>
+              <li>Terbiasa dengan air payau.</li>
+              <li>Memiliki akar yang membantu adaptasi terhadap genangan.</li>
+            </ul>
+          </div>
+          <div class="mini-question">Kesimpulan: mangrove membutuhkan kondisi pesisir tertentu.</div>
+        </article>
+        <article class="card case-card">
+          <div><div class="icon">🦎</div><h3>Komodo</h3></div>
+          <div>
+            <p><strong>Masalah:</strong> Mengapa komodo tidak hidup merata di seluruh Indonesia?</p>
+            <ul>
+              <li>Habitatnya khas di kawasan Nusa Tenggara.</li>
+              <li>Berhubungan dengan wilayah kering dan savana.</li>
+              <li>Persebarannya terbatas oleh kondisi pulau.</li>
+              <li>Ketersediaan mangsa dan ruang hidup ikut memengaruhi.</li>
+            </ul>
+          </div>
+          <div class="mini-question">Kesimpulan: persebaran fauna dipengaruhi habitat, makanan, dan batas wilayah.</div>
+        </article>
+      </div>
+    </section>
+
+    <section id="game">
+      <div class="section-title">
+        <h2>Tebak Habitat</h2>
+        <p>Pilih habitat atau wilayah yang paling sesuai. Kegiatan ini membantu menghubungkan contoh flora-fauna dengan faktor fisik wilayahnya.</p>
+      </div>
+      <div class="habitat-game">
+        <div class="game-display">
+          <div class="animal-emoji" id="gameEmoji">🌿</div>
+          <h3 id="gameName">Mangrove</h3>
+          <p id="gamePrompt">Di habitat apa flora/fauna ini paling sesuai?</p>
+          <div class="pill-row" style="justify-content:center;">
+            <span class="pill light-pill" id="gameCount">1 dari 6</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Pilih jawaban:</h3>
+          <div id="gameOptions"></div>
+          <div class="feedback-box" id="gameFeedback"></div>
+          <div class="hero-actions" style="margin-top: 16px;">
+            <button class="btn primary" onclick="nextGame()">Soal Berikutnya</button>
+            <button class="btn" onclick="resetGame()">Ulangi</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ringkasan">
+      <div class="section-title">
+        <h2>Ringkasan Konsep</h2>
+        <p>Gunakan tabel ini untuk mengingat hubungan antara habitat, contoh, dan faktor fisik utama.</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Contoh</th>
+              <th>Wilayah / Habitat</th>
+              <th>Faktor Fisik Penting</th>
+              <th>Kalimat Analisis</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Mangrove</td>
+              <td>Pesisir, muara, kawasan pasang surut</td>
+              <td>Lumpur, air payau, pasang surut</td>
+              <td>Mangrove tumbuh di pesisir karena mampu beradaptasi dengan genangan dan salinitas.</td>
+            </tr>
+            <tr>
+              <td>Hutan hujan tropis</td>
+              <td>Kalimantan, Papua, Sumatra</td>
+              <td>Curah hujan tinggi, suhu hangat, kelembapan</td>
+              <td>Curah hujan tinggi membuat vegetasi tumbuh rapat dan menyediakan banyak habitat fauna.</td>
+            </tr>
+            <tr>
+              <td>Sabana</td>
+              <td>Nusa Tenggara</td>
+              <td>Curah hujan lebih rendah, musim kering</td>
+              <td>Kondisi lebih kering membuat vegetasi berupa padang rumput dan pohon jarang.</td>
+            </tr>
+            <tr>
+              <td>Komodo</td>
+              <td>Nusa Tenggara</td>
+              <td>Habitat kering, pulau, savana, ketersediaan mangsa</td>
+              <td>Komodo memiliki persebaran terbatas karena membutuhkan habitat dan kondisi wilayah tertentu.</td>
+            </tr>
+            <tr>
+              <td>Cenderawasih</td>
+              <td>Papua</td>
+              <td>Hutan tropis, wilayah timur, habitat pepohonan</td>
+              <td>Keanekaragaman habitat Papua mendukung fauna khas wilayah timur Indonesia.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="kuis">
+      <div class="section-title">
+        <h2>Kuis Pemahaman</h2>
+        <p>Jawab soal berikut untuk mengecek pemahaman sebelum masuk ke diskusi/LKPD cetak.</p>
+      </div>
+      <div class="grid grid-2">
+        <div>
+          <div class="card quiz-card" data-answer="b">
+            <h3>1. Dalam sudut pandang Geografi, keanekaragaman hayati dipelajari dengan menekankan...</h3>
+            <button class="option" data-option="a">Nama latin setiap tumbuhan dan hewan</button>
+            <button class="option" data-option="b">Hubungan flora-fauna dengan karakteristik wilayah</button>
+            <button class="option" data-option="c">Cara membedah organ tumbuhan dan hewan</button>
+            <button class="option" data-option="d">Proses kimia dalam tubuh makhluk hidup</button>
+          </div>
+          <div class="card quiz-card" data-answer="c">
+            <h3>2. Mangrove banyak ditemukan di pesisir karena...</h3>
+            <button class="option" data-option="a">Membutuhkan udara sangat dingin</button>
+            <button class="option" data-option="b">Hanya dapat hidup di daerah pegunungan</button>
+            <button class="option" data-option="c">Beradaptasi dengan lumpur, air payau, dan pasang surut</button>
+            <button class="option" data-option="d">Tidak membutuhkan air sama sekali</button>
+          </div>
+          <div class="card quiz-card" data-answer="a">
+            <h3>3. Faktor fisik utama yang mendukung hutan hujan tropis adalah...</h3>
+            <button class="option" data-option="a">Curah hujan tinggi dan kelembapan</button>
+            <button class="option" data-option="b">Salju sepanjang tahun</button>
+            <button class="option" data-option="c">Tanah selalu kering dan tandus</button>
+            <button class="option" data-option="d">Tidak adanya sinar matahari</button>
+          </div>
+          <div class="card quiz-card" data-answer="d">
+            <h3>4. Sabana banyak dijumpai di wilayah yang...</h3>
+            <button class="option" data-option="a">Selalu tergenang air laut</button>
+            <button class="option" data-option="b">Bercurah hujan sangat tinggi sepanjang tahun</button>
+            <button class="option" data-option="c">Tertutup es tebal</button>
+            <button class="option" data-option="d">Relatif lebih kering dengan musim kering yang terasa</button>
+          </div>
+          <div class="card quiz-card" data-answer="b">
+            <h3>5. Contoh fauna khas wilayah peralihan adalah...</h3>
+            <button class="option" data-option="a">Gajah sumatra</button>
+            <button class="option" data-option="b">Komodo dan anoa</button>
+            <button class="option" data-option="c">Kanguru pohon</button>
+            <button class="option" data-option="d">Beruang kutub</button>
+          </div>
+        </div>
+
+        <aside class="score-board">
+          <h3>Skor Kuis</h3>
+          <div class="score-number"><span id="quizScore">0</span>/5</div>
+          <p id="quizFeedback">Jawab semua pertanyaan untuk melihat umpan balik.</p>
+          <div class="hero-actions" style="margin-top: 18px;">
+            <button class="btn primary" onclick="resetQuiz()">Ulangi Kuis</button>
+          </div>
+          <hr style="border:0; border-top:1px solid #dcebe1; margin: 20px 0;" />
+          <h3>Ingat rumus analisis</h3>
+          <p><strong>Contoh flora/fauna + wilayah + ciri habitat + faktor fisik + alasan hubungan.</strong></p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="penutup">
+      <div class="section-title">
+        <h2>Penutup</h2>
+        <p>Sebelum mengerjakan LKPD cetak, pastikan kamu bisa menjelaskan hubungan antara contoh flora/fauna dan kondisi fisik wilayahnya.</p>
+      </div>
+      <div class="grid grid-2">
+        <div class="card">
+          <div class="icon">✅</div>
+          <h3>Cek pemahaman diri</h3>
+          <details open>
+            <summary>Apa hal paling penting dari materi ini?</summary>
+            <p>Flora dan fauna Indonesia berbeda-beda karena setiap wilayah memiliki kondisi fisik yang berbeda. Kondisi itu membentuk habitat tertentu.</p>
+          </details>
+          <details>
+            <summary>Bagaimana cara membuat jawaban analisis yang baik?</summary>
+            <p>Jangan hanya menyebutkan contoh. Jelaskan wilayah persebaran, ciri habitat, faktor fisik yang memengaruhi, dan alasan keterkaitannya.</p>
+          </details>
+          <details>
+            <summary>Apa yang harus dilakukan setelah ini?</summary>
+            <p>Lanjutkan ke LKPD cetak yang diberikan guru untuk menganalisis contoh flora/fauna, wilayah persebaran, ciri habitat, faktor fisik, dan alasan hubungannya.</p>
+          </details>
+        </div>
+        <div class="card teacher-note">
+          <div class="icon">🧭</div>
+          <h3>Pesan akhir</h3>
+          <p>Keanekaragaman hayati bukan hanya daftar nama tumbuhan dan hewan. Dalam Geografi, keanekaragaman hayati adalah cerita tentang ruang, habitat, kondisi fisik wilayah, dan kemampuan makhluk hidup beradaptasi.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>Bahan ajar interaktif Geografi SMA • Materi: Ragam Flora dan Fauna Indonesia serta Faktor yang Memengaruhi Keanekaragamannya</p>
+    </footer>
+  </main>
+
+  <script>
+    const progress = document.getElementById('progress');
+    window.addEventListener('scroll', () => {
+      const top = window.scrollY;
+      const height = document.body.scrollHeight - window.innerHeight;
+      const percent = height > 0 ? (top / height) * 100 : 0;
+      progress.style.width = percent + '%';
+    });
+
+    function toggleFactor(card) {
+      card.classList.toggle('active');
+    }
+
+    function showPanel(id, button) {
+      document.querySelectorAll('.panel').forEach(panel => panel.classList.remove('active'));
+      document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      button.classList.add('active');
+    }
+
+    const gameItems = [
+      {
+        emoji: '🌿',
+        name: 'Mangrove',
+        answer: 'Pesisir berlumpur dan pasang surut',
+        options: ['Pegunungan tinggi bersuhu dingin', 'Pesisir berlumpur dan pasang surut', 'Padang es', 'Gurun pasir tanpa air'],
+        feedback: 'Benar. Mangrove cocok hidup di pesisir berlumpur yang dipengaruhi pasang surut dan air payau.'
+      },
+      {
+        emoji: '🌾',
+        name: 'Sabana',
+        answer: 'Wilayah kering seperti Nusa Tenggara',
+        options: ['Wilayah kering seperti Nusa Tenggara', 'Dasar laut dalam', 'Hutan rawa selalu tergenang', 'Puncak gunung bersalju'],
+        feedback: 'Benar. Sabana berkembang di wilayah yang relatif lebih kering dengan musim kering yang terasa.'
+      },
+      {
+        emoji: '🦧',
+        name: 'Orang utan',
+        answer: 'Hutan hujan tropis',
+        options: ['Hutan hujan tropis', 'Terumbu karang', 'Sabana sangat kering', 'Kawasan es'],
+        feedback: 'Benar. Orang utan hidup di hutan hujan tropis yang menyediakan pohon, makanan, dan ruang hidup.'
+      },
+      {
+        emoji: '🦎',
+        name: 'Komodo',
+        answer: 'Nusa Tenggara dan habitat savana kering',
+        options: ['Papua pegunungan salju', 'Nusa Tenggara dan habitat savana kering', 'Mangrove berlumpur', 'Sungai besar Kalimantan'],
+        feedback: 'Benar. Komodo memiliki persebaran terbatas di Nusa Tenggara dan berkaitan dengan habitat kering/savana.'
+      },
+      {
+        emoji: '🦜',
+        name: 'Cenderawasih',
+        answer: 'Hutan tropis Papua',
+        options: ['Hutan tropis Papua', 'Pesisir berlumpur Jawa', 'Sabana Nusa Tenggara', 'Gurun pasir'],
+        feedback: 'Benar. Cenderawasih merupakan fauna khas wilayah timur, terutama Papua.'
+      },
+      {
+        emoji: '🌺',
+        name: 'Raflesia',
+        answer: 'Hutan tropis lembap',
+        options: ['Hutan tropis lembap', 'Padang es', 'Laut dalam', 'Kawasan industri'],
+        feedback: 'Benar. Raflesia berkaitan dengan habitat hutan tropis yang lembap.'
+      }
+    ];
+
+    let currentGame = 0;
+    let gameAnswered = false;
+
+    function renderGame() {
+      const item = gameItems[currentGame];
+      document.getElementById('gameEmoji').textContent = item.emoji;
+      document.getElementById('gameName').textContent = item.name;
+      document.getElementById('gameCount').textContent = `${currentGame + 1} dari ${gameItems.length}`;
+      const options = document.getElementById('gameOptions');
+      const feedback = document.getElementById('gameFeedback');
+      feedback.classList.remove('show');
+      feedback.textContent = '';
+      options.innerHTML = '';
+      item.options.forEach(opt => {
+        const btn = document.createElement('button');
+        btn.className = 'option';
+        btn.textContent = opt;
+        btn.onclick = () => answerGame(btn, opt);
+        options.appendChild(btn);
+      });
+      gameAnswered = false;
+    }
+
+    function answerGame(button, choice) {
+      if (gameAnswered) return;
+      gameAnswered = true;
+      const item = gameItems[currentGame];
+      const all = document.querySelectorAll('#gameOptions .option');
+      all.forEach(btn => {
+        btn.disabled = true;
+        if (btn.textContent === item.answer) btn.classList.add('correct');
+      });
+      if (choice !== item.answer) {
+        button.classList.add('wrong');
+        document.getElementById('gameFeedback').textContent = `Belum tepat. Jawaban yang lebih sesuai: ${item.answer}. ${item.feedback}`;
+      } else {
+        document.getElementById('gameFeedback').textContent = item.feedback;
+      }
+      document.getElementById('gameFeedback').classList.add('show');
+    }
+
+    function nextGame() {
+      currentGame = (currentGame + 1) % gameItems.length;
+      renderGame();
+    }
+
+    function resetGame() {
+      currentGame = 0;
+      renderGame();
+    }
+
+    const quizAnswered = new Map();
+    document.querySelectorAll('.quiz-card').forEach((card, index) => {
+      card.querySelectorAll('.option').forEach(option => {
+        option.addEventListener('click', () => {
+          if (quizAnswered.has(index)) return;
+          const correct = card.dataset.answer;
+          const chosen = option.dataset.option;
+          card.querySelectorAll('.option').forEach(btn => {
+            btn.disabled = true;
+            if (btn.dataset.option === correct) btn.classList.add('correct');
+          });
+          if (chosen !== correct) option.classList.add('wrong');
+          quizAnswered.set(index, chosen === correct);
+          updateQuizScore();
+        });
+      });
+    });
+
+    function updateQuizScore() {
+      const score = Array.from(quizAnswered.values()).filter(Boolean).length;
+      document.getElementById('quizScore').textContent = score;
+      const feedback = document.getElementById('quizFeedback');
+      if (quizAnswered.size < 5) {
+        feedback.textContent = 'Lanjutkan sampai semua soal terjawab.';
+      } else if (score === 5) {
+        feedback.textContent = 'Sangat baik. Kamu sudah memahami hubungan flora-fauna dengan faktor fisik wilayah.';
+      } else if (score >= 3) {
+        feedback.textContent = 'Bagus. Tinjau kembali faktor fisik seperti curah hujan, pesisir, dan wilayah kering.';
+      } else {
+        feedback.textContent = 'Ayo ulangi. Fokus pada hubungan contoh, habitat, dan faktor fisik wilayah.';
+      }
+    }
+
+    function resetQuiz() {
+      quizAnswered.clear();
+      document.getElementById('quizScore').textContent = '0';
+      document.getElementById('quizFeedback').textContent = 'Jawab semua pertanyaan untuk melihat umpan balik.';
+      document.querySelectorAll('.quiz-card').forEach(card => {
+        card.querySelectorAll('.option').forEach(btn => {
+          btn.disabled = false;
+          btn.classList.remove('correct', 'wrong');
+        });
+      });
+    }
+
+    renderGame();
+  </script>
+</body>
+</html>
